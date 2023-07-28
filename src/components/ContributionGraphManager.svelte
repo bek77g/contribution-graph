@@ -29,26 +29,26 @@
   }
 </style>
 
-<h3>Добавить новый вклад</h3>
+<h3>Add a new contribution</h3>
 <form on:submit|preventDefault>
   <label>
-    Дата:
+    Date:
     <input type="date" bind:value={newDate} />
   </label>
   <label>
-    Количество:
+    Count:
     <input type="number" bind:value={newCount} />
   </label>
-  <button on:click={() => addContribution(newDate, +newCount)}>Добавить</button>
+  <button on:click={() => addContribution(newDate, +newCount)}>Add</button>
 </form>
 
-<h3>Текущие вклады</h3>
+<h3>Current contributions</h3>
 <table class="contributions-table">
   <thead>
     <tr>
-      <th>Дата</th>
-      <th>Количество</th>
-      <th>Действия</th>
+      <th>Date</th>
+      <th>Count</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -57,8 +57,8 @@
         <td>{date}</td>
         <td>{count}</td>
         <td>
-          <button on:click={() => updateContribution(i, +prompt('Введите новое количество:', count))}>Изменить</button>
-          <button on:click={() => deleteContribution(i)}>Удалить</button>
+          <button on:click={() => updateContribution(i, +prompt('Введите новое количество:', count))}>Edit</button>
+          <button on:click={() => deleteContribution(i)}>Delete</button>
         </td>
       </tr>
     {/each}

@@ -38,7 +38,7 @@
     updateGraphData();
   });
 </script>
-<main>
+
     <div class="graph">
     <ul class="months">
       <li>Jan</li>
@@ -73,7 +73,7 @@
       {/each}
     </ul>
   </div>
-</main>
+
 <style>
     .months { grid-area: months; }
     .days { grid-area: days; }
