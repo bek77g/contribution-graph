@@ -24,6 +24,11 @@
 </script>
 
 <style>
+  input {
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: none;
+  }
   .contributions-table{
     margin: 0 auto;
     max-width: 500px;
