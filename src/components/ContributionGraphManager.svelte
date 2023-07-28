@@ -57,7 +57,7 @@
         <td>{date}</td>
         <td>{count}</td>
         <td>
-          <button on:click={() => dispatch('update', { index: i, count: +prompt('Введите новое количество:', count) })}>Изменить</button>
+          <button on:click={() => updateContribution(i, +prompt('Введите новое количество:', count))}>Изменить</button>
           <button on:click={() => deleteContribution(i)}>Удалить</button>
         </td>
       </tr>
