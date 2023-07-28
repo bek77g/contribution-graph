@@ -4,7 +4,7 @@
   export let color;
 
   const formatDate = (inputDate) => {
-    return new Date(inputDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric', weekday: 'long' });
+    return new Date(inputDate).toLocaleDateString(undefined, { month: 'long', day: 'numeric', weekday: 'long' });
   };
 </script>
 
