@@ -1,7 +1,8 @@
 <script>
+  import { onMount, afterUpdate } from "svelte";
   import Square from "./Square.svelte";
 
-  export let contributions = []
+  export let contributions = [];
   const colors = ['#ebedf0', '#c6e48b', '#7bc96f', '#239a3b', '#196127', '#d0f0c0', '#9be58c', '#52c41a', '#3da940', '#2a7f29', '#a9d6ac', '#4bb543', '#1f7c1c'];
   function getColor(count) {
     return colors[Math.min(count, colors.length - 1)];
@@ -15,15 +16,27 @@
   let firstMondayOfYear = new Date(firstDayOfYear);
   firstMondayOfYear.setDate(firstMondayOfYear.getDate() + (8 - firstMondayOfYear.getDay()) % 7);
 
-  const graphData = [];
-  for (let date = new Date(firstMondayOfYear); date <= lastDayOfYear; date.setDate(date.getDate() + 1)) {
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const dateString = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-    const contribution = contributions.find((item) => item.date === dateString);
-    graphData.push(contribution || { date: dateString, count: 0 });
+  let graphData = [];
+
+  function updateGraphData() {
+    graphData = [];
+    for (let date = new Date(firstMondayOfYear); date <= lastDayOfYear; date.setDate(date.getDate() + 1)) {
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      const day = date.getDate();
+      const dateString = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+      const contribution = contributions.find((item) => item.date === dateString);
+      graphData.push(contribution || { date: dateString, count: 0 });
+    }
   }
+
+  onMount(() => {
+    updateGraphData();
+  });
+
+  afterUpdate(() => {
+    updateGraphData();
+  });
 </script>
 <main>
     <div class="graph">
