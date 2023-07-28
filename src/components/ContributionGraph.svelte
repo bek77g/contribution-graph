@@ -2,7 +2,7 @@
   import Square from "./Square.svelte";
 
   export let contributions = []
-  const colors = ['#ebedf0', '#c6e48b', '#d0f0c0', '#9be58c', '#7bc96f', '#52c41a', '#239a3b', '#3da940', '#196127', '#2a7f29', '#a9d6ac', '#4bb543', '#1f7c1c'];
+  const colors = ['#ebedf0', '#c6e48b', '#7bc96f', '#239a3b', '#196127', '#d0f0c0', '#9be58c', '#52c41a', '#3da940', '#2a7f29', '#a9d6ac', '#4bb543', '#1f7c1c'];
   function getColor(count) {
     return colors[Math.min(count, colors.length - 1)];
   }
@@ -51,7 +51,7 @@
       <li>Sat</li>
     </ul>
     <ul class="squares">
-      {#each graphData as {date, count}, i}
+      {#each graphData as {date, count}}
         <Square
             date={date}
             count={count}

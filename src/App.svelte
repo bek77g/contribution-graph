@@ -1,17 +1,32 @@
 <script>
-  import ContributionGraph from "./components/ContributionGraph.svelte";
-  const contributions = [
-    { date: '2023-06-30', count: 3 },
-    { date: '2023-07-01', count: 5 },
-    { date: '2023-07-02', count: 10 },
-    { date: '2023-07-03', count: 10 },
-    { date: '2023-07-04', count: 5 },
-    { date: '2023-07-05', count: 6 },
-    { date: '2023-07-06', count: 7 },
-    { date: '2023-02-06', count: 7 },
-  ];
+  import ContributionGraphManager from "./components/ContributionGraphManager.svelte";
+  function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function generateRandomContributions() {
+  const minCount = 1;
+  const maxCount = 20;
+  const startDate = new Date('2023-01-01');
+  const endDate = new Date('2023-12-31');
+  const numContributions = getRandomInt(5, 15);
+  
+  const contributions = [];
+
+  for (let i = 0; i < numContributions; i++) {
+    const randomDate = new Date(startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime()));
+    const randomCount = getRandomInt(minCount, maxCount);
+    contributions.push({ date: randomDate.toISOString().split('T')[0], count: randomCount });
+  }
+
+  contributions.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  return contributions;
+}
+
+const contributions = generateRandomContributions();
 </script>
 
 <main>
-  <ContributionGraph contributions={contributions}/>
+  <ContributionGraphManager contributions={contributions}/>
 </main>
