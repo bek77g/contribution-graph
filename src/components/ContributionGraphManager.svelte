@@ -26,6 +26,19 @@
 <style>
   .contributions-table{
     margin: 0 auto;
+    max-width: 500px;
+  }
+  .contributions-table thead,
+  .contributions-table tbody tr{
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+  }
+  .contributions-table tbody{
+    display: block;
+    max-height: 30vh;
+    overflow-y: scroll;
+    width: 100%;
   }
 </style>
 
